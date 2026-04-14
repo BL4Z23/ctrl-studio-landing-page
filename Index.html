@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>CTRL Studio — Control Everything Instantly</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000;
+  --surface: #0a0a0a;
+  --border: rgba(255,255,255,0.07);
+
+  --accent: #61cf5a;
+  --accent-dim: rgba(97,207,90,0.1);
+
+  --text-primary: #f0f4f8;
+  --text-secondary: #7a8a9a;
+  --text-muted: #3a4a5a;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Syne', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* tighter overall spacing */
+  padding: 40px;
+}
+
+/* BADGE */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-family: 'Space Mono', monospace;
+  color: var(--accent);
+  border: 1px solid rgba(97,207,90,0.3);
+  background: var(--accent-dim);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* LOGO */
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(70px, 10vw, 140px);
+  letter-spacing: 2px;
+}
+
+.logo-ctrl {
+  color: #61cf5a;
+}
+
+.logo-studio {
+  color: white;
+}
+
+/* TAGLINE (TERMINAL STYLE UNDER LOGO) */
+.tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-top: -12px; /* pulls closer to logo */
+}
+
+.tagline::before {
+  content: "> ";
+  color: var(--text-muted);
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.feature-pill {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* TERMINAL */
+.terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  width: 420px;
+  max-width: 90%;
+  text-align: left;
+}
+
+.terminal-bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+
+.t-dim { color: var(--text-muted); }
+.t-accent { color: var(--accent); }
+.t-white { color: var(--text-primary); }
+
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--accent);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* STATUS */
+.status-row {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  font-family: 'Space Mono', monospace;
+  color: var(--text-muted);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    In Development
+  </div>
+
+  <div class="logo">
+    <span class="logo-ctrl">CTRL</span>
+    <span class="logo-studio">Studio</span>
+  </div>
+
+  <!-- MOVED RIGHT UNDER LOGO -->
+  <p class="tagline">
+    "Control Everything. Instantly."
+  </p>
+
+  <div class="features">
+    <div class="feature-pill">⚡ WiFi & USB transport</div>
+    <div class="feature-pill">🎛 Custom button macros</div>
+    <div class="feature-pill">📱 Android client</div>
+    <div class="feature-pill">🖥 PC server</div>
+    <div class="feature-pill">✦ Glassmorphism UI</div>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+    </div>
+
+    <div><span class="t-dim">$</span> <span class="t-accent">ctrl-studio</span> <span class="t-white">--connect</span></div>
+    <div class="t-dim">searching for devices...</div>
+    <div><span class="t-accent">✓</span> <span class="t-white">device paired</span> <span class="t-dim">via wifi</span></div>
+    <div><span class="t-accent">✓</span> <span class="t-white">layout synced</span> <span class="t-dim">15 buttons loaded</span></div>
+    <div class="t-dim">ready. <span class="cursor"></span></div>
+  </div>
+
+  <div class="status-row">
+    <span><span class="status-dot"></span> BUILD IN PROGRESS</span>
+    <div class="divider"></div>
+    <span>CLOSED BETA — DEC 2026</span>
+    <div class="divider"></div>
+    <span>v0.1.0-alpha</span>
+  </div>
+
+</div>
+</body>
+</html>

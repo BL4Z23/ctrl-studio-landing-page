@@ -162,8 +162,11 @@ body::before {
 .cursor {
   display: inline-block;
   width: 7px;
-  height: 13px;
+  height: 1em;            
   background: var(--accent);
+  margin-left: 2px;         
+  vertical-align: baseline;
+  transform: translateY(2px);
   animation: blink 1s infinite;
 }
 
